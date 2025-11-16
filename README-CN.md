@@ -127,7 +127,7 @@ python main.py
 
 ```bash
 cd backend
-celery -A src.celery_app:celery_app worker --loglevel=info
+celery -A src.celery_app worker --beat -l INFO -Q default,generate_task_queue
 ```
 
 > 注意：Celery 的模块路径可能因 `celery_app` 的导出方式不同而略有区别，请根据实际情况调整。

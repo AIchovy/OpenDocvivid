@@ -125,14 +125,14 @@ Then run the API server (example using uvicorn):
 
 ```bash
 cd backend
-uvicorn main:app --reload
+python main.py
 ```
 
 To run the Celery worker (example):
 
 ```bash
 cd backend
-celery -A src.celery_app:celery_app worker --loglevel=info
+celery -A src.celery_app worker --beat -l INFO -Q default,generate_task_queue
 ```
 
 > Note: The exact module path for Celery may differ depending on how `celery_app` is exported; adjust accordingly.
